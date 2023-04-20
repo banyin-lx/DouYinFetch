@@ -1,0 +1,47 @@
+syntax = "proto3";
+option java_package = "entity.protobuf";
+option java_outer_classname = "DouYinHeader";
+
+message PushFrame {
+  int64 seqid = 1;
+  string logid = 2;
+  int64 service = 3;
+  int64 method = 4;
+  repeated PushHeader headerList= 5;
+  string payloadEncoding = 6;
+  string payloadType = 7;
+  bytes payload = 8;
+}
+
+message PushHeader {
+  int64 key = 1;
+  string value = 2;
+}
+
+message Response {
+  repeated Message messagesList = 1;
+  string cursor = 2;
+  int64 fetchInterval = 3;
+  int64 now = 4;
+  string internalExt = 5;
+  int64 fetchType = 6;
+  map<string,string> routeParamsMap = 7;
+  string heartbeatDuration = 8;
+  bool needAck = 9;
+  string pushServer = 10;
+  string liveCursor = 11;
+  bool historyNoMore = 12;
+}
+
+
+message Message {
+  string method =1;
+  bytes payload = 2;
+  int64 msgId = 3;
+  int64 msgType = 4;
+  string offset = 5;
+  bool needWrdsStore = 6;
+  string wrdsVersion = 7;
+  string wrdsSubKey = 8;
+  map<string,string> messageExtraMap = 9;
+}

@@ -1,0 +1,98 @@
+syntax = "proto3";
+option java_package = "entity.protobuf";
+option java_outer_classname = "DouYinMessage";
+package proto;
+import "DouYinHeader.proto";
+
+message ChatMessage {
+  User user = 2;
+  string content = 3;
+  bool visibleToSender = 4;
+  string chatBy = 20;
+}
+
+message User{
+  string id = 1;
+  string shortId = 2;
+  string nickname = 3;
+  int64 gender = 4;
+  string signature = 5;
+  int64 level = 6;
+  string birthday = 7;
+  string telephone = 8;
+  string city = 14;
+  string topVipNo = 31;
+  string payScore = 34;
+}
+message DisplayText{
+  string key = 1;
+  string defaultPattern = 2;
+  DefaultFormat defaultFormat = 3;
+  repeated TextPiece piecesList = 4;
+}
+
+message DefaultFormat{
+  //type: a.Message.getFieldWithDefault(e, 1, 0),
+  //                format: (o = e.getFormat()) && proto.webcast.data.TextFormat.toObject(t, o),
+  //                valueRef: a.Message.getFieldWithDefault(e, 3, ""),
+  //                stringValue: a.Message.getFieldWithDefault(e, 11, ""),
+  //                userValue: (o = e.getUserValue()) && proto.webcast.data.TextPieceUser.toObject(t, o),
+  //                giftValue: (o = e.getGiftValue()) && proto.webcast.data.TextPieceGift.toObject(t, o),
+  //                heartValue: (o = e.getHeartValue()) && proto.webcast.data.TextPieceHeart.toObject(t, o),
+  //                patternRefValue: (o = e.getPatternRefValue()) && proto.webcast.data.TextPiecePatternRef.toObject(t, o),
+  //                imageValue: (o = e.getImageValue()) && proto.webcast.data.TextPieceImage.toObject(t, o)
+}
+
+message TextPiece{
+
+}
+
+
+
+message Common{
+  string method = 1;
+  string msgId = 2;
+  string roomId = 3;
+  string createTime = 4;
+  string monitor = 5;
+  bool isShowMsg = 6;
+  string describe = 7;
+  DisplayText displayText = 8;
+  string foldType = 9;
+  string anchorFoldType = 10;
+  string priorityScore = 11;
+  string logId = 12;
+  string msgProcessFilterK = 13;
+  string msgProcessFilterV = 14;
+  User user = 15;
+  Room room = 16;
+  string anchorFoldTypeV2 = 17;
+  string processAtSeiTimeMs = 18;
+  string randomDispatchMs = 19;
+  bool isDispatch = 20;
+  string channelId = 21;
+  string diffSei2absSecond = 22;
+  string anchorFoldDuration = 23;
+  string appId = 24;
+}
+
+message Room{
+
+}
+
+message MemberMessage{
+  Common common = 1;
+  User user = 2 ;
+  int64  memberCount = 3;
+  bool isSetToAdmin = 5;
+  bool isTopUser = 6;
+  int64 rankScore = 7;
+  string topUserNo = 8;
+  string enterType = 9;
+  string action = 10;
+  string actionDescription = 11;
+  string userId = 12;
+  string popStr = 14;
+  string userEnterTipType = 20;
+  string anchorEnterTipType = 21;
+}
